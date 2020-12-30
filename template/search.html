@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{%load static%}
+
+{%block title%} Home{%endblock title%}
+
+{%block body%} 
+
+<meta name="theme-color" content="#7952b3">
+
+
+   
+    
+   
+    
+<!-- Begin page content -->
+	<!-- Main -->
+					<div id="main">
+                     <h1> related result </h1>
+                    
+						<!-- Post -->
+                       <h1> {{page_obj.paginator.count}} </h1>
+                        {% if not object_list %}
+                        <h1> No search Found </h1>
+
+                        {% else %}
+                        
+						 {% for post in object_list %}
+							<article class="post">
+								<header>
+									<div class="title">
+										<h2><a href="{% url 'post_detail' post.id %}">{{ post.title }}</a></h2>
+										<p>Lorem ipsum dolor amet nullam consequat etiam feugiat</p>
+									</div>
+									<div class="meta">
+										<time class="published" datetime="2015-11-01">{{ post.date_posted|date:"F d, Y" }}</time>
+										<a href="{% url 'user_post' post.author.username %}" class="author"><span class="name">{{ post.author }}</span><img src="{{ post.author.profile.image.url }}" alt="" /></a>
+									</div>
+								</header>
+								<a href="single.html" class="image featured"><img src="{%static 'images/pic01.jpg'%}" alt="" /></a>
+								<p>{{ post.content|linebreaksbr|slice:":400" }}</p>
+								<footer>
+									<ul class="actions">
+										<li><a href="{% url 'post_detail' post.id %}" class="button large">Continue Reading</a></li>
+									</ul>
+									<ul class="stats">
+										<li><a href="#">General</a></li>
+										<li><a href="#" class="icon solid fa-heart">{{ post.like.count }}</a></li>
+										<li><a href="#" class="icon solid fa-comment">128</a></li>
+									</ul>
+								</footer>
+							</article>
+						
+							 {% endfor %}
+
+
+    	<ul class="actions pagination">
+							 {% if page_obj.has_previous %}
+        <a class="button large next" href="?page=1">First</a>
+        <a class="button large next" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+      {% endif %}
+
+      {% if page_obj.has_next %}
+        <a class="button large next" href="?page={{ page_obj.next_page_number }}">Next</a>
+        
+      {% endif %}
+	  </ul>
+
+      {% endif %}
+   
+
+
+    
+ {%endblock body %}
