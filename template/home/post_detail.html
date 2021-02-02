@@ -5,7 +5,7 @@ display: inline-block;
 }
 {% block body %}
 	<!-- Main -->
-					<div id="main">
+					<div   style="padding: 35px 70px;"  id="main"   >
 
 						<!-- Post -->
 							<article class="post">
@@ -19,7 +19,9 @@ display: inline-block;
 										<a href="{% url 'user_post' object.author.username %}" class="author"><span class="name">{{ object.author }}</span><img src="{{ object.author.profile.image.url }}" alt="" /></a>
 									</div>
 								</header>
+                {% if post.postimage %}
 								<span class="image featured"><img src="{{ post.postimage.url }}" alt="" /></span>
+                {% endif %}
 								<p>{{ object.content|linebreaks }}</p>
 								<footer>
 									<ul class="stats">

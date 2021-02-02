@@ -101,7 +101,9 @@
 										<a href="{% url 'user_post' post.author.username %}" class="author"><span class="name">{{ post.author }}</span><img src="{{ post.author.profile.image.url }}" alt="" /></a>
 									</div>
 								</header>
-								<a  class="image featured"><img src="{{ post.postimage.url }}" alt="" /></a>
+								{% if post.postimage %}
+								<a href="{% url 'post_detail' post.id %}" class="image featured"><img src="{{ post.postimage.url }}" alt="" /></a>
+								{% endif %}
 								<p>{{ post.content|linebreaksbr|slice:":250" }}</p>
 								<footer>
 									<ul class="actions">
@@ -165,7 +167,9 @@
 												<time class="published" datetime="2015-10-20">{{ lpost.date_posted|date:"F d, Y" }}</time>
 												<a href="{% url 'user_post' lpost.author.username %}" class="author"><img src=""{{ lpost.author.profile.image.url }}"" alt="" /></a>
 											</header>
-											<a href="single.html" class="image"><img src="{{ lpost.postimage.url }}" alt="" /></a>
+											{% if lpost.postimage %}
+											<a href="{% url 'post_detail' lpost.id %}" class="image"><img src="{{ lpost.postimage.url }}" alt="" /></a>
+										{% endif %}
 										</article>
 
 										{% endfor %}

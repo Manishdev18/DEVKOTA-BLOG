@@ -70,7 +70,7 @@ class PostListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(PostListView, self).get_context_data(**kwargs)
-        context['lposts'] = Post.objects.order_by('-date_posted')[:5]
+        context['lposts'] = Post.objects.order_by('-date_posted')[:3]
         return context
     
 class UserListView(ListView):

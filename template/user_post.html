@@ -5,7 +5,7 @@
 
 {%block body%} 
 
-<meta name="theme-color" content="#7952b3">
+<meta name="theme-color" content="#7152b3">
 
 
    
@@ -29,7 +29,9 @@
 										<a href="{% url 'user_post' post.author.username %}" class="author"><span class="name">{{ post.author }}</span><img src="{{ post.author.profile.image.url }}" alt="" /></a>
 									</div>
 								</header>
-								<a href="single.html" class="image featured"><img src="{{ post.postimage.url }}" alt="" /></a>
+								{% if post.postimage %}
+								<a href="{% url 'post_detail' post.id %}" class="image featured"><img src="{{ post.postimage.url }}" alt="" /></a>
+								{% endif %}
 								<p>{{ post.content|linebreaksbr|slice:":250" }}</p>
 								<footer>
 									<ul class="actions">
