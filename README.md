@@ -15,4 +15,7 @@ https://devkota-blog.herokuapp.com/
 home page
 
 
+![home](https://user-images.githubusercontent.com/66712725/125986084-dbb89ba5-cba2-4434-8a7f-4d9c4cb9867e.png)
+
+
 
